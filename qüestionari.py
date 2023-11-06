@@ -5,13 +5,23 @@ def main(page:ft.Page):
         page.clean()
         name=input_name.value
         age=int(input_date_of_birth.value)
-        text_nom=ft.Text(value=f"nom: {name}")
-        text_edat=ft.Text(value=f"edat: {age} anys")
-        page.add(text_nom,text_edat)
-        if age < (18):
-            text_edat=ft.Text(value=f"you're allowed to pass to the website")
+        text_nom=ft.Text(value=f"nom: {name}",size=50,color="yellow")
+        if age >= (18):
+            text_edat=ft.Text(value=f"you're {age}, you're allowed to pass to the website",size=50,color="green")
         else: 
-            text_edat=ft.Text(value=f"you're not allowed to pass to the website")
+            text_edat=ft.Text(value=f"you're {age}, you're not allowed to pass to the website",size=50,color="red")
+
+        
+        page.add(
+            ft.Row(
+                controls=[text_nom],
+                alignment="center"
+            ),
+            ft.Row(
+                controls=[text_edat],
+                alignment="center"
+            )
+        )
     titulo=ft.Text(value="Qüestionari",size=40,color="blue")
     input_name=ft.TextField(label="Name")
     input_last_name=ft.TextField(label="Last name")
